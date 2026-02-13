@@ -4,155 +4,199 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OutSignal — Новости, Бизнес, Аналитика</title>
+<meta name="description" content="OutSignal — независимое медиа о бизнесе, строительстве и стратегической аналитике.">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
+<!-- =======================
+     SCHEMA.ORG MICRODATA
+======================= -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "OutSignal",
+  "url": "https://outsignal.com",
+  "description": "Независимое медиа о бизнесе, строительстве и стратегической аналитике",
+  "publisher": {
+    "@type": "Organization",
+    "name": "OutSignal",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://outsignal.com/logo.png"
+    }
+  }
+}
+</script>
+
 <style>
 
-/* RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* =====================
+   BASE
+===================== */
+
+* { margin:0; padding:0; box-sizing:border-box; }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background: #ffffff;
-    color: #111;
+    font-family:'Inter', sans-serif;
+    background:#fff;
+    color:#111;
 }
 
-/* HEADER */
+/* =====================
+   HEADER
+===================== */
 
 header {
-    position: relative;
-    height: 72px;
-    border-bottom: 1px solid #eaeaea;
-    background: #ffffff;
+    position:relative;
+    height:72px;
+    border-bottom:1px solid #eaeaea;
 }
 
 .header-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 24px;
+    max-width:1280px;
+    margin:0 auto;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 24px;
 }
 
-/* BURGER */
-
 .burger {
-    width: 22px;
-    height: 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    cursor: pointer;
+    width:22px;
+    height:16px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
 }
 
 .burger span {
-    height: 2px;
-    background: #111;
-    width: 100%;
+    height:2px;
+    background:#111;
 }
-
-/* LOGO CENTERED */
 
 .logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    color: #000;
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    font-family:'Playfair Display', serif;
+    font-size:28px;
+    font-weight:700;
 }
 
-/* Yellow Brush Effect */
-
 .brand-highlight {
-    position: relative;
-    display: inline-block;
+    position:relative;
 }
 
 .brand-highlight::after {
-    content: "";
-    position: absolute;
-    left: -6px;
-    right: -6px;
-    bottom: 6px;
-    height: 12px;
-    background: #ffd400;
-    z-index: -1;
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:4px;
+    width:100%;
+    height:6px;
+    background:#ffd400;
+    z-index:-1;
 }
-
-/* RIGHT SIDE */
 
 .right {
-    display: flex;
-    align-items: center;
-    gap: 18px;
+    display:flex;
+    gap:18px;
+    align-items:center;
 }
 
-.right a {
-    text-decoration: none;
-    color: #111;
-    font-weight: 500;
-    font-size: 14px;
+/* =====================
+   CONTENT GRID
+===================== */
+
+.container {
+    max-width:1180px;
+    margin:60px auto;
+    padding:0 20px;
 }
 
-.search-icon {
-    font-size: 18px;
-    cursor: pointer;
+.posts-grid {
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:40px;
 }
 
-/* HERO SECTION */
-
-.hero {
-    max-width: 900px;
-    margin: 80px auto;
-    padding: 0 20px;
-    text-align: center;
+.post-card {
+    text-decoration:none;
+    color:#111;
 }
 
-.hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 40px;
-    font-weight: 600;
-    margin-bottom: 20px;
+.post-image {
+    width:100%;
+    aspect-ratio:16/9;
+    overflow:hidden;
+    margin-bottom:16px;
 }
 
-.hero p {
-    font-size: 18px;
-    line-height: 1.7;
-    color: #444;
+.post-image img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:0.3s ease;
 }
 
-/* MOBILE */
+.post-card:hover img {
+    transform:scale(1.03);
+}
 
-@media (max-width: 768px) {
+.post-title {
+    font-family:'Playfair Display', serif;
+    font-size:22px;
+    margin-bottom:10px;
+}
 
-    .logo {
-        font-size: 22px;
+.post-excerpt {
+    font-size:16px;
+    line-height:1.6;
+    color:#555;
+}
+
+/* =====================
+   FOOTER
+===================== */
+
+footer {
+    background:#000;
+    color:#fff;
+    padding:60px 20px;
+    margin-top:80px;
+}
+
+.footer-inner {
+    max-width:1180px;
+    margin:0 auto;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+}
+
+/* =====================
+   MOBILE
+===================== */
+
+@media (max-width:768px){
+
+    .posts-grid {
+        grid-template-columns:1fr;
     }
 
-    .hero h1 {
-        font-size: 28px;
-    }
+    .logo { font-size:22px; }
 
 }
 
 </style>
 </head>
-
 <body>
 
 <header>
     <div class="header-inner">
-
         <div class="burger">
             <span></span>
             <span></span>
@@ -164,20 +208,66 @@ header {
         </div>
 
         <div class="right">
-            <a href="#">RU</a>
-            <div class="search-icon">🔍</div>
+            <span>RU</span>
+            <span>🔍</span>
         </div>
-
     </div>
 </header>
 
-<section class="hero">
-    <h1>Редакционная аналитика нового поколения</h1>
-    <p>
-        Новости, бизнес, строительство, ритейл и стратегическая аналитика.
-        Минимализм. Чистота. Авторитет.
-    </p>
-</section>
+<main class="container">
+
+<div class="posts-grid">
+
+<!-- ARTICLE 1 -->
+
+<article class="post-card" itemscope itemtype="https://schema.org/BlogPosting">
+    <a href="#">
+        <div class="post-image">
+            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf"
+                 alt="Бизнес аналитика"
+                 itemprop="image">
+        </div>
+
+        <h2 class="post-title" itemprop="headline">
+            Стратегические изменения в строительной отрасли 2026
+        </h2>
+
+        <p class="post-excerpt" itemprop="description">
+            Анализ рынка, инвестиционные тренды и влияние геоэкономических факторов.
+        </p>
+    </a>
+</article>
+
+<!-- ARTICLE 2 -->
+
+<article class="post-card" itemscope itemtype="https://schema.org/BlogPosting">
+    <a href="#">
+        <div class="post-image">
+            <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7"
+                 alt="Ритейл рынок"
+                 itemprop="image">
+        </div>
+
+        <h2 class="post-title" itemprop="headline">
+            Ритейл будущего: цифровая трансформация
+        </h2>
+
+        <p class="post-excerpt" itemprop="description">
+            Как технологии меняют потребительский рынок и поведение клиентов.
+        </p>
+    </a>
+</article>
+
+</div>
+
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <div>OutSignal</div>
+        <div>© 2026 Независимая редакция</div>
+    </div>
+</footer>
 
 </body>
 </html>
