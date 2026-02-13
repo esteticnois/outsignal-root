@@ -3,20 +3,288 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OutSignal Test</title>
+<title>OutSignal — Новости, бизнес, аналитика</title>
+
+<meta name="description" content="OutSignal — независимое медиа: новости, бизнес, строительство, ритейл, аналитика и статьи.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="OutSignal">
+<meta property="og:description" content="Новости и аналитика.">
+<meta property="og:type" content="website">
+
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
-body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  padding: 100px;
+
+/* ================= BASE ================= */
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body{
+  font-family:'Inter', sans-serif;
+  background:#fff;
+  color:#111;
+  line-height:1.65;
 }
-h1 {
-  font-size: 40px;
+
+a{
+  color:#0047ff;
+  text-decoration:underline;
 }
+
+/* ================= HEADER ================= */
+
+header{
+  border-bottom:1px solid #eaeaea;
+  background:#fff;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.header-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 24px;
+}
+
+.brand{
+  font-family:'UnifrakturCook', serif;
+  font-size:30px;
+  position:relative;
+  display:inline-block;
+}
+
+.brand::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:6px;
+  width:100%;
+  height:12px;
+  background:#ffd400;
+  z-index:-1;
+}
+
+.header-right{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  font-weight:600;
+}
+
+.search{
+  cursor:pointer;
+  font-size:18px;
+}
+
+/* ================= NAV ================= */
+
+.nav{
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  padding:12px 0;
+  border-top:1px solid #f1f1f1;
+  font-size:15px;
+}
+
+.nav a{
+  text-decoration:none;
+  color:#000;
+}
+
+/* ================= CONTENT ================= */
+
+.container{
+  max-width:900px;
+  margin:60px auto;
+  padding:0 20px;
+}
+
+h1{
+  font-size:34px;
+  margin-bottom:24px;
+  font-weight:700;
+}
+
+.article-image{
+  margin-bottom:32px;
+}
+
+.article-image img{
+  width:100%;
+  display:block;
+}
+
+p{
+  margin-bottom:20px;
+  font-size:18px;
+}
+
+mark{
+  background:#ffd400;
+  padding:2px 6px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  background:#000;
+  color:#fff;
+  margin-top:80px;
+  padding:60px 20px;
+}
+
+.footer-container{
+  max-width:1000px;
+  margin:auto;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:40px;
+  margin-bottom:40px;
+}
+
+.footer-title{
+  font-weight:700;
+  margin-bottom:12px;
+}
+
+.footer-grid a{
+  color:#fff;
+  text-decoration:none;
+  display:block;
+  margin-bottom:8px;
+}
+
+.footer-action{
+  margin-top:20px;
+}
+
+.footer-action button{
+  background:#ffd400;
+  color:#000;
+  border:none;
+  padding:14px 24px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.footer-bottom{
+  border-top:1px solid #333;
+  padding-top:20px;
+  font-size:14px;
+  opacity:0.7;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+  .nav{ display:none; }
+
+  h1{ font-size:24px; }
+
+  p{ font-size:16px; }
+
+}
+
 </style>
 </head>
+
 <body>
-<h1>OutSignal работает 🚀</h1>
-<p>Если ты видишь это — Cloudflare Pages настроен правильно.</p>
+
+<header>
+
+<div class="header-top">
+
+<div class="brand">OutSignal</div>
+
+<div class="header-right">
+<div>RU</div>
+<div class="search">🔍</div>
+</div>
+
+</div>
+
+<nav class="nav">
+<a href="#">Новости</a>
+<a href="#">Бизнес</a>
+<a href="#">Строительство</a>
+<a href="#">Ритейл</a>
+<a href="#">Статья</a>
+<a href="#">Блог</a>
+</nav>
+
+</header>
+
+<main class="container">
+
+<h1>Рост потребительских цен превысил прогноз</h1>
+
+<div class="article-image">
+<img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3" alt="Экономика и рынок">
+</div>
+
+<p>
+Индекс потребительских цен вырос выше ожиданий аналитиков. 
+Экономисты отмечают, что <mark>инфляционное давление</mark> сохраняется в ключевых отраслях.
+</p>
+
+<p>
+По данным экспертов, рост зафиксирован в сегментах розничной торговли и строительства.
+Подробнее — в разделе <a href="#">Бизнес</a>.
+</p>
+
+<p>
+Аналитики считают, что дальнейшая динамика будет зависеть от решений регуляторов и состояния глобальных рынков.
+</p>
+
+</main>
+
+<footer>
+
+<div class="footer-container">
+
+<div class="footer-grid">
+
+<div>
+<div class="footer-title">Разделы</div>
+<a href="#">Новости</a>
+<a href="#">Бизнес</a>
+<a href="#">Строительство</a>
+<a href="#">Ритейл</a>
+</div>
+
+<div>
+<div class="footer-title">Информация</div>
+<a href="#">О проекте</a>
+<a href="#">Контакты</a>
+<a href="#">Политика</a>
+</div>
+
+<div>
+<div class="footer-title">Связаться</div>
+<p>Прислать новость</p>
+<p>Написать нам</p>
+</div>
+
+</div>
+
+<div class="footer-action">
+<button>Разместить материал</button>
+</div>
+
+<div class="footer-bottom">
+© 2026 OutSignal. Все права защищены.
+</div>
+
+</div>
+
+</footer>
+
 </body>
 </html>
