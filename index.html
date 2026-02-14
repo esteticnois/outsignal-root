@@ -7,9 +7,7 @@
 
 <style>
 
-/* =========================
-   RESET
-========================= */
+/* RESET */
 
 * {
     margin: 0;
@@ -24,9 +22,7 @@ body {
     line-height: 1.6;
 }
 
-/* =========================
-   HEADER (плавающий)
-========================= */
+/* HEADER */
 
 header {
     position: sticky;
@@ -40,18 +36,15 @@ header {
     transition: box-shadow 0.3s ease;
 }
 
-/* тень при скролле */
 header.scrolled {
     box-shadow: 0 4px 14px rgba(0,0,0,0.08);
 }
 
-/* логотип */
 .logo {
     font-size: 28px;
     font-weight: bold;
 }
 
-/* маркер */
 .marker-underline {
     position: relative;
     display: inline-block;
@@ -71,7 +64,8 @@ header.scrolled {
     border-radius: 4px;
 }
 
-/* меню */
+/* NAV */
+
 nav a {
     margin-left: 20px;
     text-decoration: none;
@@ -85,22 +79,18 @@ nav a:hover {
     color: #000;
 }
 
-/* =========================
-   MAIN GRID
-========================= */
+/* MAIN */
 
 main {
     padding: 60px 5%;
 }
 
-/* сетка статей */
 .article-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
 }
 
-/* карточка */
 .article-card img {
     width: 100%;
     height: auto;
@@ -110,7 +100,7 @@ main {
 .article-card h2 {
     font-size: 22px;
     margin: 15px 0 10px;
-    color: #000; /* черные заголовки */
+    color: #000;
 }
 
 .article-card p {
@@ -118,7 +108,8 @@ main {
     color: #444;
 }
 
-/* внутренние ссылки */
+/* LINKS */
+
 a {
     color: #0044cc;
     text-decoration: none;
@@ -128,9 +119,7 @@ a:hover {
     text-decoration: underline;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer {
     background: #111;
@@ -171,9 +160,7 @@ footer a:hover {
     color: #888;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media (max-width: 768px) {
 
@@ -191,7 +178,7 @@ footer a:hover {
     }
 
     nav {
-        display: none; /* можно заменить на бургер */
+        display: none;
     }
 
     footer {
@@ -281,8 +268,6 @@ footer a:hover {
 </footer>
 
 <script>
-
-/* тень при скролле */
 window.addEventListener("scroll", function() {
     const header = document.getElementById("header");
     if (window.scrollY > 10) {
@@ -291,7 +276,6 @@ window.addEventListener("scroll", function() {
         header.classList.remove("scrolled");
     }
 });
-
 </script>
 
 </body>
