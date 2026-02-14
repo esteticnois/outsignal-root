@@ -227,18 +227,226 @@ footer a:hover {
 </div>
 
 </main>
-<div class="photo-slider">
-    <button class="slider-btn prev">&#10094;</button>
+<div class="os-slider">
 
-    <div class="slider-track">
-        <img src="img1.jpg" alt="Фото 1">
-        <img src="img2.jpg" alt="Фото 2">
-        <img src="img3.jpg" alt="Фото 3">
-        <img src="img4.jpg" alt="Фото 4">
+    <div class="os-slider-wrapper">
+
+        <div class="os-slider-track">
+
+            <div class="os-slide">
+                <img src="img1.jpg" alt="Фото 1" loading="lazy">
+                <div class="os-caption">Подпись к фото 1</div>
+            </div>
+
+            <div class="os-slide">
+                <img src="img2.jpg" alt="Фото 2" loading="lazy">
+                <div class="os-caption">Подпись к фото 2</div>
+            </div>
+
+            <div class="os-slide">
+                <img src="img3.jpg" alt="Фото 3" loading="lazy">
+                <div class="os-caption">Подпись к фото 3</div>
+            </div>
+
+        </div>
+
+        <button class="os-btn os-prev">&#10094;</button>
+        <button class="os-btn os-next">&#10095;</button>
+
+        <div class="os-counter">1 / 3</div>
+
+        <div class="os-dots"></div>
+
     </div>
 
-    <button class="slider-btn next">&#10095;</button>
 </div>
+
+<style>
+.os-slider {
+    position: relative;
+    width: 100%;
+    margin: 50px 0;
+    user-select: none;
+}
+
+.os-slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.os-slider-track {
+    display: flex;
+    transition: transform 0.45s cubic-bezier(.4,0,.2,1);
+}
+
+.os-slide {
+    min-width: 100%;
+    position: relative;
+}
+
+.os-slide img {
+    width: 100%;
+    height: 550px;
+    object-fit: cover;
+    display: block;
+}
+
+.os-caption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 15px 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+    color: #fff;
+    font-size: 14px;
+}
+
+.os-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.6);
+    border: none;
+    color: #fff;
+    font-size: 26px;
+    padding: 10px 16px;
+    cursor: pointer;
+    z-index: 5;
+    transition: 0.3s;
+}
+
+.os-btn:hover {
+    background: #ffd400;
+    color: #000;
+}
+
+.os-prev { left: 15px; }
+.os-next { right: 15px; }
+
+.os-counter {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    padding: 6px 12px;
+    font-size: 13px;
+    border-radius: 20px;
+}
+
+.os-dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.os-dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.os-dot.active {
+    background: #ffd400;
+}
+
+@media (max-width: 768px) {
+    .os-slide img {
+        height: 320px;
+    }
+    .os-btn {
+        display: none;
+    }
+}
+</style>
+
+<script>
+const slider = document.querySelector('.os-slider');
+const track = slider.querySelector('.os-slider-track');
+const slides = slider.querySelectorAll('.os-slide');
+const next = slider.querySelector('.os-next');
+const prev = slider.querySelector('.os-prev');
+const counter = slider.querySelector('.os-counter');
+const dotsContainer = slider.querySelector('.os-dots');
+
+let index = 0;
+let total = slides.length;
+let startX = 0;
+let isDragging = false;
+
+function updateSlider() {
+    track.style.transform = `translateX(-${index * 100}%)`;
+    counter.textContent = `${index + 1} / ${total}`;
+    document.querySelectorAll('.os-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+    });
+}
+
+function nextSlide() {
+    index = (index + 1) % total;
+    updateSlider();
+}
+
+function prevSlide() {
+    index = (index - 1 + total) % total;
+    updateSlider();
+}
+
+next.addEventListener('click', nextSlide);
+prev.addEventListener('click', prevSlide);
+
+slides.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.classList.add('os-dot');
+    if(i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => {
+        index = i;
+        updateSlider();
+    });
+    dotsContainer.appendChild(dot);
+});
+
+track.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+});
+
+track.addEventListener('touchend', e => {
+    if(!isDragging) return;
+    let endX = e.changedTouches[0].clientX;
+    if(startX - endX > 50) nextSlide();
+    if(endX - startX > 50) prevSlide();
+    isDragging = false;
+});
+
+/* Fullscreen on click */
+slides.forEach(slide => {
+    slide.addEventListener('click', () => {
+        if (!document.fullscreenElement) {
+            slide.requestFullscreen();
+        } else {
+            document.exitFullscreen();
+        }
+    });
+});
+
+/* Auto play (как на dorama.land) */
+let autoPlay = setInterval(nextSlide, 5000);
+
+slider.addEventListener('mouseenter', () => clearInterval(autoPlay));
+slider.addEventListener('mouseleave', () => {
+    autoPlay = setInterval(nextSlide, 5000);
+});
+
+updateSlider();
+</script>
 <footer>
 
 <div class="footer-grid">
@@ -273,7 +481,7 @@ footer a:hover {
 </div>
 
 <div class="footer-bottom">
-    © 2026 OutSignal. Все права защищены.
+    © 2014-2026 OutSignal. Все права защищены.
 </div>
 
 </footer>
