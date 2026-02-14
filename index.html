@@ -197,57 +197,11 @@ footer a:hover {
 <body>
 
 <header id="header">
-    <!-- BURGER START -->
-<style>
-.os-burger{
-    width:28px;
-    height:20px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    cursor:pointer;
-    z-index:1100;
-}
-.os-burger span{
-    height:2px;
-    width:100%;
-    background:#000;
-    transition:.3s ease;
-}
-
-/* animation */
-.os-burger.active span:nth-child(1){
-    transform:rotate(45deg) translate(5px,5px);
-}
-.os-burger.active span:nth-child(2){
-    opacity:0;
-}
-.os-burger.active span:nth-child(3){
-    transform:rotate(-45deg) translate(5px,-5px);
-}
-
-/* hide on desktop if нужно */
-@media(min-width:1024px){
-    .os-burger{display:none;}
-}
-</style>
-
 <div class="os-burger" id="osBurger">
     <span></span>
     <span></span>
     <span></span>
 </div>
-
-<script>
-(function(){
-    const burger=document.getElementById("osBurger");
-    burger.addEventListener("click",function(){
-        this.classList.toggle("active");
-        document.body.classList.toggle("menu-open");
-    });
-})();
-</script>
-<!-- BURGER END -->
     <div class="logo">
         <span class="marker-underline"><a href="https://outsignal.com">OutSignal</a></span>
     </div>
