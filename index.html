@@ -3,191 +3,205 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OutSignal — Новости, Бизнес, Аналитика</title>
-<meta name="description" content="OutSignal — независимое медиа о бизнесе, строительстве и стратегической аналитике.">
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-<!-- =======================
-     SCHEMA.ORG MICRODATA
-======================= -->
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "OutSignal",
-  "url": "https://outsignal.com",
-  "description": "Независимое медиа о бизнесе, строительстве и стратегической аналитике",
-  "publisher": {
-    "@type": "Organization",
-    "name": "OutSignal",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://outsignal.com/logo.png"
-    }
-  }
-}
-</script>
+<title>OutSignal</title>
 
 <style>
 
-/* =====================
-   BASE
-===================== */
+/* =========================
+   RESET
+========================= */
 
-* { margin:0; padding:0; box-sizing:border-box; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
-    font-family:'Inter', sans-serif;
-    background:#fff;
-    color:#111;
+    font-family: Georgia, serif;
+    background: #ffffff;
+    color: #111;
+    line-height: 1.6;
 }
 
-/* =====================
-   HEADER
-===================== */
+/* =========================
+   HEADER (плавающий)
+========================= */
 
 header {
-    position:relative;
-    height:72px;
-    border-bottom:1px solid #eaeaea;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 999;
+    padding: 18px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: box-shadow 0.3s ease;
 }
 
-.header-inner {
-    max-width:1280px;
-    margin:0 auto;
-    height:100%;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 24px;
+/* тень при скролле */
+header.scrolled {
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
 }
 
-.burger {
-    width:22px;
-    height:16px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-}
-
-.burger span {
-    height:2px;
-    background:#111;
-}
-
+/* логотип */
 .logo {
-    position:absolute;
-    left:50%;
-    transform:translateX(-50%);
-    font-family:'Playfair Display', serif;
-    font-size:28px;
-    font-weight:700;
+    font-size: 28px;
+    font-weight: bold;
 }
 
-.brand-highlight {
-    position:relative;
+/* маркер */
+.marker-underline {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
 }
 
-.brand-highlight::after {
-    content:"";
-    position:absolute;
-    left:0;
-    bottom:4px;
-    width:100%;
-    height:6px;
-    background:#ffd400;
-    z-index:-1;
+.marker-underline::after {
+    content: "";
+    position: absolute;
+    left: -5%;
+    bottom: 0.05em;
+    width: 110%;
+    height: 0.35em;
+    background: #f4d03f;
+    z-index: -1;
+    transform: rotate(-0.7deg);
+    border-radius: 4px;
 }
 
-.right {
-    display:flex;
-    gap:18px;
-    align-items:center;
+/* меню */
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #111;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-/* =====================
-   CONTENT GRID
-===================== */
-
-.container {
-    max-width:1180px;
-    margin:60px auto;
-    padding:0 20px;
+nav a:hover {
+    color: #000;
 }
 
-.posts-grid {
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:40px;
+/* =========================
+   MAIN GRID
+========================= */
+
+main {
+    padding: 60px 5%;
 }
 
-.post-card {
-    text-decoration:none;
-    color:#111;
+/* сетка статей */
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
 }
 
-.post-image {
-    width:100%;
-    aspect-ratio:16/9;
-    overflow:hidden;
-    margin-bottom:16px;
+/* карточка */
+.article-card img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
-.post-image img {
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transition:0.3s ease;
+.article-card h2 {
+    font-size: 22px;
+    margin: 15px 0 10px;
+    color: #000; /* черные заголовки */
 }
 
-.post-card:hover img {
-    transform:scale(1.03);
+.article-card p {
+    font-size: 15px;
+    color: #444;
 }
 
-.post-title {
-    font-family:'Playfair Display', serif;
-    font-size:22px;
-    margin-bottom:10px;
+/* внутренние ссылки */
+a {
+    color: #0044cc;
+    text-decoration: none;
 }
 
-.post-excerpt {
-    font-size:16px;
-    line-height:1.6;
-    color:#555;
+a:hover {
+    text-decoration: underline;
 }
 
-/* =====================
+/* =========================
    FOOTER
-===================== */
+========================= */
 
 footer {
-    background:#000;
-    color:#fff;
-    padding:60px 20px;
-    margin-top:80px;
+    background: #111;
+    color: #fff;
+    padding: 60px 5%;
+    margin-top: 80px;
 }
 
-.footer-inner {
-    max-width:1180px;
-    margin:0 auto;
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
 }
 
-/* =====================
+footer h3 {
+    font-size: 14px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+footer a {
+    color: #ccc;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+footer a:hover {
+    color: #fff;
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    font-size: 13px;
+    color: #888;
+}
+
+/* =========================
    MOBILE
-===================== */
+========================= */
 
-@media (max-width:768px){
+@media (max-width: 768px) {
 
-    .posts-grid {
-        grid-template-columns:1fr;
+    .article-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
     }
 
-    .logo { font-size:22px; }
+    header {
+        padding: 14px 5%;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    nav {
+        display: none; /* можно заменить на бургер */
+    }
+
+    footer {
+        padding: 40px 5%;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
 
 }
 
@@ -195,79 +209,90 @@ footer {
 </head>
 <body>
 
-<header>
-    <div class="header-inner">
-        <div class="burger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-
-        <div class="logo">
-            <span class="brand-highlight">OutSignal</span>
-        </div>
-
-        <div class="right">
-            <span>RU</span>
-            <span>🔍</span>
-        </div>
+<header id="header">
+    <div class="logo">
+        <span class="marker-underline">OutSignal</span>
     </div>
+    <nav>
+        <a href="#">Новости</a>
+        <a href="#">Бизнес</a>
+        <a href="#">Статья</a>
+        <a href="#">Блог</a>
+    </nav>
 </header>
 
-<main class="container">
+<main>
 
-<div class="posts-grid">
+<div class="article-grid">
 
-<!-- ARTICLE 1 -->
+    <div class="article-card">
+        <img src="https://via.placeholder.com/800x500" alt="">
+        <h2>Редакционный заголовок статьи</h2>
+        <p>Краткое описание материала. <a href="#">Читать полностью →</a></p>
+    </div>
 
-<article class="post-card" itemscope itemtype="https://schema.org/BlogPosting">
-    <a href="#">
-        <div class="post-image">
-            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf"
-                 alt="Бизнес аналитика"
-                 itemprop="image">
-        </div>
-
-        <h2 class="post-title" itemprop="headline">
-            Стратегические изменения в строительной отрасли 2026
-        </h2>
-
-        <p class="post-excerpt" itemprop="description">
-            Анализ рынка, инвестиционные тренды и влияние геоэкономических факторов.
-        </p>
-    </a>
-</article>
-
-<!-- ARTICLE 2 -->
-
-<article class="post-card" itemscope itemtype="https://schema.org/BlogPosting">
-    <a href="#">
-        <div class="post-image">
-            <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7"
-                 alt="Ритейл рынок"
-                 itemprop="image">
-        </div>
-
-        <h2 class="post-title" itemprop="headline">
-            Ритейл будущего: цифровая трансформация
-        </h2>
-
-        <p class="post-excerpt" itemprop="description">
-            Как технологии меняют потребительский рынок и поведение клиентов.
-        </p>
-    </a>
-</article>
+    <div class="article-card">
+        <img src="https://via.placeholder.com/800x500" alt="">
+        <h2>Аналитический разбор темы</h2>
+        <p>Внутренние ссылки оформлены синим цветом. <a href="#">Подробнее →</a></p>
+    </div>
 
 </div>
 
 </main>
 
 <footer>
-    <div class="footer-inner">
-        <div>OutSignal</div>
-        <div>© 2026 Независимая редакция</div>
+
+<div class="footer-grid">
+
+    <div>
+        <h3>OutSignal</h3>
+        <a href="#">О проекте</a>
+        <a href="#">Редакция</a>
+        <a href="#">Контакты</a>
     </div>
+
+    <div>
+        <h3>Разделы</h3>
+        <a href="#">Новости</a>
+        <a href="#">Бизнес</a>
+        <a href="#">Строительство</a>
+    </div>
+
+    <div>
+        <h3>Партнёрам</h3>
+        <a href="#">Разместить материал</a>
+        <a href="#">Реклама</a>
+    </div>
+
+    <div>
+        <h3>Связь</h3>
+        <a href="#">Прислать новость</a>
+        <a href="#">Telegram</a>
+        <a href="#">Email</a>
+    </div>
+
+</div>
+
+<div class="footer-bottom">
+    © 2026 OutSignal. Все права защищены.
+</div>
+
 </footer>
+
+<script>
+
+/* тень при скролле */
+window.addEventListener("scroll", function() {
+    const header = document.getElementById("header");
+    if (window.scrollY > 10) {
+        header.classList.add("scrolled");
+    } else {
+        header.classList.remove("scrolled");
+    }
+});
+
+</script>
 
 </body>
 </html>
